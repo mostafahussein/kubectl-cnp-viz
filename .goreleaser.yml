@@ -1,0 +1,31 @@
+version: 2
+project_name: kubectl-cnp-viz
+release:
+  github:
+    owner: mostafahussein
+    name: kubectl-cnp-viz
+builds:
+  - id: kubectl-cnp-viz
+    binary: kubectl-cnp-viz
+    goos:
+    - linux
+    - windows
+    - darwin
+    goarch:
+    - amd64
+    - arm64
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    main: cmd/plugin/main.go
+    ldflags:
+      - -s -w
+      - -X github.com/mostafahussein/kubectl-cnp-viz/pkg/version.version=
+archives:
+  - id: kubectl-cnp-viz
+    builds:
+    - kubectl-cnp-viz
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+    - goos: windows
+      formats: [ 'zip' ]

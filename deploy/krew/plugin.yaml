@@ -1,0 +1,65 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: cnp-viz
+spec:
+  version: {{ .TagName }}
+  platforms:
+  - selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+    {{addURIAndSha "https://github.com/mostafahussein/kubectl-cnp-viz/releases/download/{{ .TagName }}/kubectl-cnp-viz_linux_amd64.tar.gz" .TagName }}
+    files:
+    - from: "./kubectl-cnp-viz"
+      to: "."
+    bin: "kubectl-cnp-viz"
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+    {{addURIAndSha "https://github.com/mostafahussein/kubectl-cnp-viz/releases/download/{{ .TagName }}/kubectl-cnp-viz_darwin_amd64.tar.gz" .TagName }}
+    files:
+    - from: "./kubectl-cnp-viz"
+      to: "."
+    bin: "kubectl-cnp-viz"
+  - selector:
+      matchLabels:
+        os: windows
+        arch: amd64
+    {{addURIAndSha "https://github.com/mostafahussein/kubectl-cnp-viz/releases/download/{{ .TagName }}/kubectl-cnp-viz_windows_amd64.zip" .TagName }}
+    files:
+    - from: "/kubectl-cnp-viz.exe"
+      to: "."
+    bin: "kubectl-cnp-viz.exe"
+  - selector:
+      matchLabels:
+        os: linux
+        arch: arm64
+    {{addURIAndSha "https://github.com/mostafahussein/kubectl-cnp-viz/releases/download/{{ .TagName }}/kubectl-cnp-viz_linux_arm64.tar.gz" .TagName }}
+    files:
+    - from: "./kubectl-cnp-viz"
+      to: "."
+    bin: "kubectl-cnp-viz"
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: arm64
+    {{addURIAndSha "https://github.com/mostafahussein/kubectl-cnp-viz/releases/download/{{ .TagName }}/kubectl-cnp-viz_darwin_arm64.tar.gz" .TagName }}
+    files:
+    - from: "./kubectl-cnp-viz"
+      to: "."
+    bin: "kubectl-cnp-viz"
+  - selector:
+      matchLabels:
+        os: windows
+        arch: arm64
+    {{addURIAndSha "https://github.com/mostafahussein/kubectl-cnp-viz/releases/download/{{ .TagName }}/kubectl-cnp-viz_windows_arm64.zip" .TagName }}
+    files:
+    - from: "./kubectl-cnp-viz.exe"
+      to: "."
+    bin: "kubectl-cnp-viz.exe"
+  shortDescription: Visualize Cilium Network Policies without leaving the terminal
+  homepage: https://github.com/mostafahussein/kubectl-cnp-viz
+  description: |
+    Visualize Cilium Network Policies without leaving the terminal
