@@ -8,6 +8,12 @@ A `kubectl` plugin that fetches a given `CiliumNetworkPolicy` resource from the 
 
 ## Installation
 
+### Using krew (Recommended)
+
+```
+kubectl krew install cnp-viz
+```
+
 ### Manual Installation
 
 1. Download the latest release from GitHub Releases.
