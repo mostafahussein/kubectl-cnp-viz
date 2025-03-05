@@ -8,13 +8,26 @@ A `kubectl` plugin that fetches a given `CiliumNetworkPolicy` resource from the 
 
 ## Installation
 
-### Using krew (Recommended)
+### Install the browsers and OS dependencies
+
+> Note: Instead of installing all browsers, you can specify the browser (e.g. install chrome --with-deps)
+
+```
+go run github.com/playwright-community/playwright-go/cmd/playwright@v0.4902.0 install --with-deps
+
+# Or
+
+go install github.com/playwright-community/playwright-go/cmd/playwright@v0.4902.0
+playwright install --with-deps
+```
+
+### Install the plugin using krew (Recommended)
 
 ```
 kubectl krew install cnp-viz
 ```
 
-### Manual Installation
+### Install the plugin manually
 
 1. Download the latest release from GitHub Releases.
 
